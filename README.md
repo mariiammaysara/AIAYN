@@ -1,6 +1,6 @@
 # Attention Is All You Need
 
-![Attention Is All You Need](assets/attention-paper.svg)
+![Attention Is All You Need](attention-paper.svg)
 
 ---
 
