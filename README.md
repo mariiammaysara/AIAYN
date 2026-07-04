@@ -111,6 +111,27 @@ The model was trained for the full **40 epochs** using the scaled configuration 
   booktitle={Advances in Neural Information Processing Systems},
   year={2017}
 }
+
+@article{xiong2020layer,
+  title={On Layer Normalization in the Transformer Architecture},
+  author={Xiong, Ruibin and Yang, Yichuan and He, Di and Zheng, Kai and Zheng, Shuxin and Xing, Chen and Zhang, Huishuai and Lan, Yanyan and Wang, Liwei and Liu, Tie-Yan},
+  journal={International Conference on Machine Learning (ICML)},
+  year={2020}
+}
+
+@inproceedings{wolf2020transformers,
+  title={Transformers: State-of-the-Art Natural Language Processing},
+  author={Wolf, Thomas and Debut, Lysandre and Sanh, Victor and Chaumond, Julien and Delangue, Clement and Moi, Anthony and Pierric, Cistac and Funtowicz, Morgan and Chaumond, Julien and Plu, Julien and others},
+  booktitle={Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations},
+  year={2020}
+}
+
+@inproceedings{paszke2019pytorch,
+  title={PyTorch: An Imperative Style, High-Performance Deep Learning Library},
+  author={Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and others},
+  booktitle={Advances in Neural Information Processing Systems},
+  year={2019}
+}
 ```
 ---
 <div align="center">
