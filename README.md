@@ -85,8 +85,8 @@ Each module maps directly to a specific section of the original paper (reference
 ## Setup
 
 ```bash
-git clone https://github.com/<your-username>/attention-is-all-you-need.git
-cd attention-is-all-you-need
+git clone https://github.com/mariiammaysara/AIAYN.git
+cd AIAYN
 pip install -r requirements.txt
 ```
 
