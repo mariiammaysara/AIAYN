@@ -75,14 +75,32 @@ tensorboard --logdir runs/
 
 ## Results
 
-*(fill in after training: loss curve screenshot, final BLEU/CER/WER, a few example translations)*
+The model was trained for the full **40 epochs** using the scaled configuration (`d_model=256`, `num_layers=4`, `num_heads=8`, `d_ff=512`, `max_samples=20000`, `warmup_steps=4000`) on a GPU runtime, showing excellent convergence:
+
+<p align="center">
+  <img src="assets/Loss_train_epoch.png" width="32%" alt="Training Loss Curve" />
+  <img src="assets/Validation_BLEU.png" width="32%" alt="Validation BLEU Curve" />
+  <img src="assets/Validation_WER.png" width="32%" alt="Validation WER Curve" />
+</p>
+
+- **Training Loss**: Decreased from **8.86** in Epoch 1 to **1.61** in Epoch 40.
+- **Validation BLEU**: Peaked at **0.0607** (6.07%) at Epoch 36.
 
 | Metric | Value |
 |---|---|
-| Final training loss | — |
-| Validation BLEU | — |
-| Validation CER | — |
-| Validation WER | — |
+| Final training loss | **1.61** (Epoch 40) |
+| Validation BLEU | **0.0607** (Epoch 36) |
+| Validation CER | **0.7041** (Epoch 38) |
+| Validation WER | **0.8766** (Epoch 39) |
+
+### Example Translations (Epoch 15)
+
+*   **Source**: `The Prince frowned and coughed as he listened to the doctor .`
+    *   **Reference**: `Il principe le sopracciglia e nell ’ ascoltarlo .`
+    *   **Predicted**: `Il principe si accigliò e il medico si rivolse di nuovo .` *(Correctly translates "The prince frowned" and associates "doctor" with "medico").*
+*   **Source**: `He seemed to be worrying about his clothes all night .`
+    *   **Reference**: `Mi parve che si tutta la notte per i panni .`
+    *   **Predicted**: `Pareva che a far tutta la notte , gli abiti .` *(Captures "seemed" with "Pareva" and "clothes" with "abiti").*
 
 ## Reference
 
