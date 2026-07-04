@@ -301,7 +301,10 @@ def load_and_prepare_data(settings: TrainingSettings) -> Tuple[DataLoader, DataL
             raw_dataset = raw_dataset.select(range(subset_size))
         split_dataset = raw_dataset.train_test_split(test_size=0.1, seed=42)
     else:
-        split_dataset = load_dataset(settings.dataset_name)
+        split_dataset = load_dataset(
+            settings.dataset_name,
+            f"{settings.src_lang}-{settings.tgt_lang}"
+        )
         if settings.max_samples > 0:
             for split_name in split_dataset.keys():
                 subset_size = min(settings.max_samples, len(split_dataset[split_name]))
