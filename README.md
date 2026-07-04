@@ -97,6 +97,6 @@ tensorboard --logdir runs/
 ---
 <div align="center">
 
-Implemented by Mariam Maysara.
+Built from scratch by Mariam Maysara.
 
 </div>
