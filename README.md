@@ -94,7 +94,7 @@ tensorboard --logdir runs/
   year={2017}
 }
 ```
-
+---
 <div align="center">
 
 Implemented by Mariam Maysara.
