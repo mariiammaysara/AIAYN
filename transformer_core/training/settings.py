@@ -21,7 +21,7 @@ class TrainingSettings:
     warmup_steps: int = 4000  # Number of steps for linear warmup
 
     # Dataset details (en-it translation pair)
-    dataset_name: str = "opus_books"
+    dataset_name: str = "Helsinki-NLP/opus_books"
     src_lang: str = "en"
     tgt_lang: str = "it"
 

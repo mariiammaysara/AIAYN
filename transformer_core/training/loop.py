@@ -289,7 +289,7 @@ def load_and_prepare_data(settings: TrainingSettings) -> Tuple[DataLoader, DataL
     print(f"Preparing dataset: {settings.dataset_name} for pair: {settings.src_lang}-{settings.tgt_lang}...")
     
     # Load dataset splits
-    if settings.dataset_name == "opus_books":
+    if settings.dataset_name in ["opus_books", "Helsinki-NLP/opus_books"]:
         raw_dataset = load_dataset(
             settings.dataset_name,
             f"{settings.src_lang}-{settings.tgt_lang}",
