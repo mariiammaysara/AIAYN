@@ -1,8 +1,6 @@
 # Attention is all you need
 
-A from-scratch, modular PyTorch reimplementation of the Transformer architecture introduced in [*Attention Is All You Need*](https://arxiv.org/abs/1706.03762) (Vaswani et al., 2017).
-
-This project was built as part of my preparation for graduate research in **Autonomous Systems / Spatial Intelligence**, to establish a rigorous, first-principles understanding of the attention mechanism that underlies most modern sequence and spatial reasoning architectures — including the transformer-based perception and multi-agent reasoning systems I work with in [Spatialize](https://github.com/mariiammaysara/Spatialize) and [RIAM](https://github.com/mariiammaysara/RIAM).
+A from-scratch, modular PyTorch reimplementation of the Transformer architecture introduced in [*Attention Is All You Need*](https://arxiv.org/abs/1706.03762) (Vaswani et al., 2017), implemented by **Mariam Maysara**.
 
 ## Motivation
 
@@ -97,7 +95,8 @@ tensorboard --logdir runs/
 }
 ```
 
-## Author
+<div align="center">
 
-Mariam Maysara — AI Engineering, building toward graduate research in Autonomous Systems / Spatial Intelligence.
-[GitHub](https://github.com/mariiammaysara) · [Portfolio](https://mariammaysara.com)
+Implemented by Mariam Maysara.
+
+</div>
