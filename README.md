@@ -14,15 +14,24 @@ Rather than treating the Transformer as a black box imported from a library, thi
 ## Learning Objectives
 
 *   **Token Embedding Scaling**: Why we scale input embeddings by the square root of the model dimension to balance the positional encoding signals:
-    $$\text{Scaled Embeddings} = \text{Embeddings} \times \sqrt{d_{\text{model}}}$$
+
+$$\text{Scaled Embeddings} = \text{Embeddings} \times \sqrt{d_{\text{model}}}$$
+
 *   **Scaled Dot-Product Attention**: Why dividing query-key dot products by the square root of the query dimension prevents vanishing gradients in softmax:
-    $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V$$
+
+$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V$$
+
 *   **Custom Layer Normalization**: Mathematical formulation of normalization with learnable parameters $\gamma$ and $\beta$ to control variance and shifts:
-    $$\text{LayerNorm}(x) = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} \odot \gamma + \beta$$
+
+$$\text{LayerNorm}(x) = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} \odot \gamma + \beta$$
+
 *   **Pre-LN Training Stability**: Implementing LayerNorm before sub-layers (Pre-LN) rather than after (Post-LN) to allow gradient flow directly through the residual stream without scaling bottlenecks:
-    $$\text{Pre-LN}(x) = x + \text{SubLayer}(\text{LayerNorm}(x))$$
+
+$$\text{Pre-LN}(x) = x + \text{SubLayer}(\text{LayerNorm}(x))$$
+
 *   **Causal Masking**: Restricting the decoder self-attention from attending to future tokens via lower-triangular causal masks:
-    $$\text{Causal Mask}(L) = \text{tril}(\mathbf{1}_{L \times L})$$
+
+$$\text{Causal Mask}(L) = \text{tril}(\mathbf{1}_{L \times L})$$
 
 
 ## Features
