@@ -387,7 +387,7 @@ def train_model(settings: TrainingSettings, resume_path: str = None):
     # 1. Prepare data loaders and tokenizers
     train_loader, val_loader, src_tokenizer, tgt_tokenizer = load_and_prepare_data(settings)
     
-    device = torch.device(settings.device if torch.cuda.is_available() and settings.device == "cuda" else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using execution device: {device}")
     
     # 2. Build the Model

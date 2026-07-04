@@ -32,4 +32,4 @@ class TrainingSettings:
     # Directory and infrastructure settings
     checkpoint_dir: str = "./checkpoints"
     log_dir: str = "./logs"
-    device: str = "cpu"  # Force default to CPU (user will deploy to GPU in Colab)
+    device: str = "cpu"  # Note: Overridden by runtime auto-detection in loop.py
