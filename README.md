@@ -11,6 +11,45 @@ Rather than treating the Transformer as a black box imported from a library, thi
 - how masking enforces causality in autoregressive decoding
 - how encoder and decoder stacks compose into a full sequence-to-sequence model
 
+## Learning Objectives
+
+*   **Token Embedding Scaling**: Why we scale input embeddings by square root of model dimension to balance the positional encoding signals:
+    ```text
+    Scaled_Embeddings = Embeddings * sqrt(d_model)
+    ```
+*   **Scaled Dot-Product Attention**: Why dividing query-key dot products by the square root of query dimension prevents vanishing gradients in softmax:
+    ```text
+    Attention(Q, K, V) = softmax( (Q * K^T) / sqrt(d_k) ) * V
+    ```
+*   **Custom Layer Normalization**: Mathematical formulation of normalization with learnable parameters $\gamma$ and $\beta$ to control variance and shifts:
+    ```text
+    LayerNorm(x) = [ (x - mean) / sqrt(var + eps) ] * gamma + beta
+    ```
+*   **Pre-LN Training Stability**: Implementing LayerNorm before sub-layers (Pre-LN) rather than after (Post-LN) to allow gradient flow directly through the residual stream without scaling bottlenecks:
+    ```text
+    Pre-LN = x + SubLayer(LayerNorm(x))
+    ```
+*   **Causal Masking**: Restricting the decoder self-attention from attending to future tokens via lower-triangular causal masks:
+    ```text
+    Causal_Mask_Matrix = [tril(ones(seq_len, seq_len))]
+    ```
+
+## Features
+
+- Multi-Head Self Attention
+- Scaled Dot Product Attention
+- Sinusoidal Positional Encoding
+- Residual Connections
+- Layer Normalization (Pre-LN)
+- Position-wise Feed Forward Network
+- Encoder Stack
+- Decoder Stack
+- Causal Masking (Decoder Self-Attention)
+- Padding Mask (Encoder & Cross-Attention)
+- Seq2Seq Transformer (Full Sequence-to-Sequence model)
+- Autoregressive decoding (beam-search extension ready)
+
+
 ## Architecture
 
 Implemented as a modular package rather than a single monolithic file, mirroring how attention-based components are typically organized in research codebases:
@@ -75,7 +114,7 @@ tensorboard --logdir runs/
 
 ## Results
 
-The model was trained for the full **40 epochs** using the scaled configuration (`d_model=256`, `num_layers=4`, `num_heads=8`, `d_ff=512`, `max_samples=20000`, `warmup_steps=4000`) on a GPU runtime, showing excellent convergence:
+The model was trained for the full **40 epochs** using the scaled configuration (`d_model=256`, `num_layers=4`, `num_heads=8`, `d_ff=512`, `max_samples=20000`, `warmup_steps=4000`) on a GPU runtime, showing stable optimization and successful convergence throughout training:
 
 <p align="center">
   <img src="assets/Loss_train_epoch.png" width="32%" alt="Training Loss Curve" />
@@ -93,7 +132,9 @@ The model was trained for the full **40 epochs** using the scaled configuration 
 | Validation CER | **0.7041** (Epoch 38) |
 | Validation WER | **0.8766** (Epoch 39) |
 
-### Example Translations (Epoch 15)
+### Representative Translations (Intermediate Epoch 15)
+
+The translations below are representative predictions from an intermediate training stage (Epoch 15), displaying clear semantic alignment learning before the model starts overfitting on the small dataset:
 
 *   **Source**: `The Prince frowned and coughed as he listened to the doctor .`
     *   **Reference**: `Il principe le sopracciglia e nell ’ ascoltarlo .`
